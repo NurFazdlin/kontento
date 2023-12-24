@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('room_availabilities', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('gender', ['male','female']);
+            $table->string('phone_number')->unique();
+            $table->string('matric_number')->unique();
+            $table->text('address')->nullable();
+            $table->integer('age');
             $table->timestamps();
         });
     }

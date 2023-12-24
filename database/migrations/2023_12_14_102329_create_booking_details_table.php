@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('booking_details', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('icnumber')->unique();
+            $table->string('phone_number')->unique();
+            $table->enum('typeofhomestay', ['kontena','villaredan','glamping']);
+            $table->string('roomnumber')->unique();
+            $table->date('checkin');
+            $table->date('checkout');
             $table->timestamps();
         });
     }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookingDetailsController;
+use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'rooms', 'as' => 'rooms.'], function () {
+    Route::get('/', [RoomsController::class, 'index'])->name('index');
+    Route::get('/create', [RoomsController::class, 'create'])->name('create');
+    Route::post('store', [RoomsController::class, 'store'])->name('store');
+    Route::get('/{room}/show', [RoomsController::class, 'show'])->name('show');
+    Route::get('/{room}/edit', [RoomsController::class, 'edit'])->name('edit');
+    Route::put('/{room}/update', [RoomsController::class, 'update'])->name('update');
+    Route::delete('/{room}/destroy', [RoomsController::class, 'destroy'])->name('destroy');
+});
+
+Route::group(['prefix' => 'bookingDetails', 'as' => 'bookingDetails.'], function () {
+    Route::get('/', [BookingDetailsController::class, 'index'])->name('index');
+    Route::get('/create', [BookingDetailsController::class, 'create'])->name('create');
+    Route::post('store', [BookingDetailsController::class, 'store'])->name('store');
+    Route::get('/{bookingDetail}/show', [BookingDetailsController::class, 'show'])->name('show');
+    Route::get('/{bookingDetail}/edit', [BookingDetailsController::class, 'edit'])->name('edit');
+    Route::put('/{bookingDetail}/update', [BookingDetailsController::class, 'update'])->name('update');
+    Route::delete('/{bookingDetail}/destroy', [BookingDetailsController::class, 'destroy'])->name('destroy');
+});
