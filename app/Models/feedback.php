@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class feedback extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+
+    protected $table = 'feedbacks';
+
+    protected $fillable = [
+        'name',
+        'roomnumber',
+        'date',
+        'staffservice',
+        'cleanliness',
+        'housekeeping',
+        'cafefood',
+        'amenities',
+        'overallhomestayrating',
+        'othercommments',
+    ];
 }

@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class booking extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+
+    protected $table = 'bookings';
+
+    protected $fillable = [
+        'name',
+        'typeofhomestay',
+        'roomnumber',
+        'bookingdate',
+        'days',
+        'checkin',
+        'checkout',
+    ];
 }

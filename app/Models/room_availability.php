@@ -12,11 +12,11 @@ class room_availability extends Model
     protected $table = 'room_availabilities';
 
     protected $fillable = [
-        'Room',
-        'Type of Homestay',
-        'address',
+        'roomnumber',
+        'typeofhomestay',
+        'roomtype',
+        'occupancy',
         'description',
-        'files',
         'price',
     ];
 }
