@@ -46,12 +46,12 @@ class RoomsController extends Controller
         
         try {
             $storeRoom = new room_availability();
-            $storeRoom->name = $request->name;
-            $storeRoom->gender = $request->gender;
-            $storeRoom->phone_number = $request->phone_number;
-            $storeRoom->matric_number = $request->matric_number;
-            $storeRoom->address = $request->address;
-            $storeRoom->age = $request->age;
+            $storeRoom->roomnumber = $request->roomnumber;
+            $storeRoom->typeofhomestay = $request->typeofhomestay;
+            $storeRoom->roomtype = $request->roomtype;
+            $storeRoom->occupency = $request->occupency;
+            $storeRoom->description = $request->description;
+            $storeRoom->price = $request->price;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('rooms.create')->with('error', 'Room unable to save');
@@ -114,12 +114,12 @@ class RoomsController extends Controller
         
         try {
             $storeRoom = new room_availability();
-            $storeRoom->name = $request->name;
-            $storeRoom->gender = $request->gender;
-            $storeRoom->phone_number = $request->phone_number;
-            $storeRoom->matric_number = $request->matric_number;
-            $storeRoom->address = $request->address;
-            $storeRoom->age = $request->age;
+            $storeRoom->roomnumber = $request->roomnumber;
+            $storeRoom->typeofhomestay = $request->typeofhomestay;
+            $storeRoom->roomtype = $request->roomtype;
+            $storeRoom->occupency = $request->occupency;
+            $storeRoom->description = $request->description;
+            $storeRoom->price = $request->price;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('rooms.edit', $room)->with('error', 'Room unable to update');
