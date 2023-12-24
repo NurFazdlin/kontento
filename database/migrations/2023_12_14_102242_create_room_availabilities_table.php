@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('room_availabilities', function (Blueprint $table) {
             $table->id();
             $table->string('roomnumber')->unique();
+            $table->enum('typeofhomestay', ['kontena','villaredan','glamping']);
             $table->string('roomtype');
             $table->integer('occupancy');
             $table->text('description')->nullable();
+            $table->string('price');
             $table->timestamps();
         });
     }
