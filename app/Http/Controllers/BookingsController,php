@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\booking_detail;
+use App\Models\booking;
 
-class BookingDetailsController extends Controller
+class Bookings extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class BookingDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $bookingDetails = booking_detail::get();
-        return view('bookingDetail.index', compact('bookingDetails'));    
+        $bookings = booking::get();
+        return view('booking.index', compact('bookings'));    
     }
 
     /**
@@ -24,7 +24,7 @@ class BookingDetailsController extends Controller
      */
     public function create()
     {
-        return view('bookingDetail.create');
+        return view('booking.create');
     }
 
     /**
@@ -46,20 +46,19 @@ class BookingDetailsController extends Controller
         ]);*/
         
         try {
-            $storeBookingDetails = new booking_detail();
-            $storeBookingDetails->name = $request->name;
-            $storeBookingDetails->email = $request->email;
-            $storeBookingDetails->icnumber = $request->icnumber;
-            $storeBookingDetails->phone_number = $request->phone_number;
-            $storeBookingDetails->typeofhomestay = $request->typeofhomestay;
-            $storeBookingDetails->roomnumber = $request->roomnumber;
-            $storeBookingDetails->checkin = $request->checkin;
-            $storeBookingDetails->checkout = $request->checkout;
+            $storeBooking = new booking();
+            $storeBooking->name = $request->name;
+            $storeBooking->typeofhomestay = $request->typeofhomestay;
+            $storeBooking->roomnumber = $request->roomnumber;
+            $storeBooking->bookingdate = $request->bookingdate;
+            $storeBooking->days = $request->days;
+            $storeBooking->checkin = $request->checkin;
+            $storeBooking->checkout = $request->checkout;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('bookingDetail.create')->with('error', 'Booking details unable to save');
         }
-        $storeBookingDetails->save();
+        $storeBooking->save();
         return redirect()->route('bookingDetail.index')->with('success', 'Booking details saved successfully');
     }
 
