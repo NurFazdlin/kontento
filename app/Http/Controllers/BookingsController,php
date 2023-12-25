@@ -13,8 +13,8 @@ class BookingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $bookings = booking::get();
-        return view('booking.index', compact('bookings'));    
+        $Bookings = booking::get();
+        return view('Booking.index', compact('Bookings'));    
     }
 
     /**
@@ -24,7 +24,7 @@ class BookingsController extends Controller
      */
     public function create()
     {
-        return view('booking.create');
+        return view('Booking.create');
     }
 
     /**
@@ -56,10 +56,10 @@ class BookingsController extends Controller
             $storeBooking->checkout = $request->checkout;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('booking.create')->with('error', 'Booking unable to save');
+            return redirect()->route('Booking.create')->with('error', 'Booking unable to save');
         }
         $storeBooking->save();
-        return redirect()->route('booking.index')->with('success', 'Booking saved successfully');
+        return redirect()->route('Booking.index')->with('success', 'Booking saved successfully');
     }
 
     /**
@@ -68,15 +68,15 @@ class BookingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($booking)
+    public function show($Booking)
     {
         try {
-            $editbooking = booking::findOrFail($booking);
+            $editBooking = booking::findOrFail($Booking);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('booking.index')->with('error', 'Booking not found');
+            return redirect()->route('Bookings.index')->with('error', 'Booking not found');
         }
-        return view('booking.show', compact('editbooking'));
+        return view('Booking.show', compact('editBooking'));
     }
 
     /**
@@ -85,15 +85,15 @@ class BookingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($booking)
+    public function edit($Booking)
     {
         try {
-            $editbooking = booking::findOrFail($booking);
+            $editBooking = booking::findOrFail($Booking);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('booking.index')->with('error', 'Booking not found');
+            return redirect()->route('Bookings.index')->with('error', 'Booking not found');
         }
-        return view('booking.edit', compact('editbooking'));
+        return view('Booking.edit', compact('editBooking'));
     }
 
     /**
@@ -103,7 +103,7 @@ class BookingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $booking)
+    public function update(Request $request, $Booking)
     {
         /*$request->validate([
             'name'          => 'required|string|min:3|max:255',
@@ -125,10 +125,10 @@ class BookingsController extends Controller
             $storeBooking->checkout = $request->checkout;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('booking.edit', $booking)->with('error', 'Booking unable to update');
+            return redirect()->route('Bookings.edit', $Booking)->with('error', 'Booking unable to update');
         }
-        $storebooking->save();
-        return redirect()->route('booking.index')->with('success', 'Booking updated successfully');
+        $storeBooking->save();
+        return redirect()->route('Bookings.index')->with('success', 'Booking updated successfully');
     }
 
     /**
@@ -137,15 +137,15 @@ class BookingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($booking)
+    public function destroy($Booking)
     {
         try {
-            $deletebooking = booking::findOrFail($booking);
+            $deleteBooking = booking::findOrFail($Booking);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('booking.index')->with('error', 'Booking not found');
+            return redirect()->route('Bookings.index')->with('error', 'Booking not found');
         }
-        $deletebooking->delete();
-        return redirect()->route('booking.index')->with('success', 'Booking deleted successfully');
+        $deleteBooking->delete();
+        return redirect()->route('Bookings.index')->with('success', 'Booking deleted successfully');
     }
 }
