@@ -35,14 +35,14 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'name'          => 'required|string|min:3|max:255',
             'gender'        => 'required|in:male,female',
             'phone_number'  => 'required|regex:/^60[0-9]{9,10}$/|unique:room_availabilities,phone_number',
             'matric_number' => 'required|regex:/^D[0-9]{11}$/|unique:room_availabilities,matric_number',
             'address'       => 'nullable|string',
             'age'           => 'required|numeric|between:17,90',
-        ]);
+        ]);*/
         
         try {
             $storeRoom = new room_availability();
@@ -103,14 +103,14 @@ class RoomsController extends Controller
      */
     public function update(Request $request, $room)
     {
-        $request->validate([
+        /*$request->validate([
             'name'          => 'required|string|min:3|max:255',
             'gender'        => 'required|in:male,female',
             'phone_number'  => 'required|regex:/^60[0-9]{9,10}$/|unique:room_availabilities,phone_number,' . $student,
             'matric_number' => 'required|regex:/^D[0-9]{11}$/|unique:room_availabilities,matric_number,' . $student,
             'address'       => 'nullable|string',
             'age'           => 'required|numeric|between:17,90',
-        ]);
+        ]);*/
         
         try {
             $storeRoom = new room_availability();
