@@ -71,7 +71,7 @@ class BookingsController extends Controller
     public function show($booking)
     {
         try {
-            $booking = booking::findOrFail($booking);
+            $editbooking = booking::findOrFail($booking);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('bookingDetails.index')->with('error', 'Booking details not found');
@@ -88,7 +88,7 @@ class BookingsController extends Controller
     public function edit($booking)
     {
         try {
-            $booking = booking_detail::findOrFail($booking);
+            $editbooking = booking_detail::findOrFail($booking);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('bookingDetails.index')->with('error', 'Booking detail not found');
@@ -127,7 +127,7 @@ class BookingsController extends Controller
             \Log::error($e->getMessage());
             return redirect()->route('bookingDetails.edit', $booking)->with('error', 'Booking details unable to update');
         }
-        $storeBookingDetails->save();
+        $storebooking->save();
         return redirect()->route('bookingDetails.index')->with('success', 'Booking details updated successfully');
     }
 
@@ -140,12 +140,12 @@ class BookingsController extends Controller
     public function destroy($booking)
     {
         try {
-            $booking = booking_detail::findOrFail($booking);
+            $deletebooking = booking_detail::findOrFail($booking);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('bookingDetails.index')->with('error', 'Booking details not found');
         }
-        $booking->delete();
+        $deletebooking->delete();
         return redirect()->route('bookingDetails.index')->with('success', 'Booking details deleted successfully');
     }
 }

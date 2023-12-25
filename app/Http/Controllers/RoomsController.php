@@ -49,7 +49,7 @@ class RoomsController extends Controller
             $storeRoom->roomnumber = $request->roomnumber;
             $storeRoom->typeofhomestay = $request->typeofhomestay;
             $storeRoom->roomtype = $request->roomtype;
-            $storeRoom->occupency = $request->occupency;
+            $storeRoom->occupancy = $request->occupancy;
             $storeRoom->description = $request->description;
             $storeRoom->price = $request->price;
         } catch (\Exception $e) {
@@ -117,7 +117,7 @@ class RoomsController extends Controller
             $storeRoom->roomnumber = $request->roomnumber;
             $storeRoom->typeofhomestay = $request->typeofhomestay;
             $storeRoom->roomtype = $request->roomtype;
-            $storeRoom->occupency = $request->occupency;
+            $storeRoom->occupancy = $request->occupancy;
             $storeRoom->description = $request->description;
             $storeRoom->price = $request->price;
         } catch (\Exception $e) {
