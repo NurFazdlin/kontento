@@ -27,57 +27,58 @@
 
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="name">Name <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="name" value="{{ old('name') }}">
-                        @error('name')
+                        <label for="roomnumber">Room Number <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="roomnumber" value="{{ old('roomnumber') }}">
+                        @error('roomnumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="gender">Gender <span class="text-danger">*</span></label>
-                        <select id="gender" name="gender" class="form-control" required>
-                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}> Male </option>
-                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}> Female </option>
+                        <label for="typeofhomestay">Type of Homestay <span class="text-danger">*</span></label>
+                        <select id="typeofhomestay" name="typeofhomestay" class="form-control" required>
+                            <option value="kontena" {{ old('typeofhomestay') == 'kontena' ? 'selected' : '' }}> HomestaykontenaMelaka </option>
+                            <option value="villaredan" {{ old('typeofhomestay') == 'villaredan' ? 'selected' : '' }}> Villa Redan Homestay </option>
+                            <option value="glamping" {{ old('typeofhomestay') == 'glamping' ? 'selected' : '' }}> Melaka Private Glamping </option>
                         </select>
-                        @error('gender')
+                        @error('typeofhomestay')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="phone_number">Phone Number <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="phone_number" value="{{ old('phone_number') }}">
-                        @error('phone_number')
+                        <label for="roomtype">Type of Room <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="roomtype" value="{{ old('roomtype') }}">
+                        @error('roomtype')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="matric_number">Matric Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="matric_number" value="{{ old('matric_number') }}">
-                        @error('matric_number')
+                        <label for="occupancy">Occupancy <span class="text-danger">*</span></label>
+                        <input type="number" required class="form-control" name="occupancy" value="{{ old('occupancy') }}">
+                        @error('occupancy')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="address">Address <span class="text-danger"></span></label>
-                        <textarea class="form-control" name="address">{{ old('address') }}</textarea>
-                        @error('address')
+                        <label for="description">Description <span class="text-danger"></span></label>
+                        <input type="text" required class="form-control" name="description">{{ old('description') }}
+                        @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="age">Age<span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="age" value="{{ old('age') }}">
-                        @error('age')
+                        <label for="price">Price<span class="text-danger">*</span></label>
+                        <input type="number" required class="form-control" name="price" value="{{ old('price') }}">
+                        @error('price')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
