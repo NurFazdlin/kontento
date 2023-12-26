@@ -43,18 +43,9 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="icnumber">IC Number <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="icnumber" value="{{ old('icnumber') }}">
-                        @error('icnumber')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
-                        <label for="email">Phone Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="email" value="{{ old('email') }}">
-                        @error('email')
+                        <label for="roomnumber">Room Number <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="roomnumber" value="{{ old('roomnumber') }}">
+                        @error('roomnumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -74,15 +65,6 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="roomnumber">Room Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="roomnumber" value="{{ old('roomnumber') }}">
-                        @error('roomnumber')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
                         <label for="checkin">Check-In Date <span class="text-danger">*</span></label>
                         <input type="text" required class="form-control" id="checkin" name="checkin" value="{{ old('checkin') }}">
                         @error('checkin')
@@ -90,15 +72,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="mb-2">
-                    <div class="form-group">
-                        <label for="checkout">Check-Out Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkout" name="checkout" value="{{ old('checkout') }}">
-                        @error('checkout')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
+                
 
                 <script type="text/javascript" src="js/datepicker.js"></script>
 
