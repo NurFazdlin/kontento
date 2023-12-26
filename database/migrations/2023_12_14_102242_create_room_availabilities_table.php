@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('roomnumber')->unique();
             $table->enum('typeofhomestay', ['kontena','villaredan','glamping']);
-            $table->string('roomtype');
             $table->integer('occupancy');
             $table->text('description')->nullable();
             $table->string('price');
