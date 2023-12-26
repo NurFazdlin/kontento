@@ -27,58 +27,59 @@
                 @method('PUT')
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="name">Name <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="name" value="{{ $editroom->name }}">
-                        @error('name')
+                        <label for="roomnumber">Room Number <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="roomnumber" value="{{ $editroom->roomnumber }}">
+                        @error('roomnumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="gender">Gender <span class="text-danger">*</span></label>
-                        <select id="gender" name="gender" class="form-control" required>
-                            <option value="male" {{ $editroom->gender == 'male' ? 'selected' : '' }}> Male </option>
-                            <option value="female" {{ $editroom->gender == 'female' ? 'selected' : '' }}> Female </option>
+                        <label for="typeofhomestay">Type of Homestay <span class="text-danger">*</span></label>
+                        <select id="typeofhomestay" name="typeofhomestay" class="form-control" required>
+                            <option value="kontena" {{ $editroom->typeofhomestay == 'kontena' ? 'selected' : '' }}> Male </option>
+                            <option value="villaredan" {{ $editroom->typeofhomestay == 'villaredan' ? 'selected' : '' }}> Female </option>                            <option value="female" {{ $editroom->typeofhomestay == 'female' ? 'selected' : '' }}> Female </option>
+                            <option value="glamping" {{ $editroom->typeofhomestay == 'glamping' ? 'selected' : '' }}> Female </option>
                         </select>
-                        @error('gender')
+                        @error('typeofhomestay')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="phone_number">Phone Number <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="phone_number" value="{{ $editroom->phone_number }}">
-                        @error('phone_number')
+                        <label for="roomtype">Room Type <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="roomtype" value="{{ $editroom->roomtype }}">
+                        @error('roomtype')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="matric_number">Matric Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="matric_number" value="{{ $editroom->matric_number }}">
-                        @error('matric_number')
+                        <label for="occupancy">Occupancy <span class="text-danger">*</span></label>
+                        <input type="number" required class="form-control" name="occupancy" value="{{ $editroom->occupancy }}">
+                        @error('occupancy')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="address">Address <span class="text-danger"></span></label>
-                        <textarea class="form-control" name="address">{{ $editroom->address }}</textarea>
-                        @error('address')
+                        <label for="description">Address <span class="text-danger"></span></label>
+                        <textarea class="form-control" name="description">{{ $editroom->description }}</textarea>
+                        @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="age">Age<span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="age" value="{{ $editroom->age }}">
-                        @error('age')
-                            <span class="text-danger">{{ $message }}</span>
+                        <label for="price">Price <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="price" value="{{ $editroom->price }}">
+                        @error('price')
+                            <span class="text-danger">RM {{ $message }}</span>
                         @enderror
                     </div>
                 </div>

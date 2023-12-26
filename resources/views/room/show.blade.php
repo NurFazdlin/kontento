@@ -24,32 +24,32 @@
 
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Name: {{ $editroom->name }}</p>
+                    <p>Room Number: {{ $editroom->roomnumber }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Name: {{ $editroom->gender }}</p>
+                    <p>Type of Homestay: {{ $editroom->typeofhomestay }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Phone Number: {{ $editroom->phone_number }}</p>
+                    <p>Room Type: {{ $editroom->roomtype }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Matric Number: {{ $editroom->matric_number }}</p>
+                    <p>Occupancy: {{ $editroom->occupancy }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Address: {{ $editroom->address }}</p>
+                    <p>Description: {{ $editroom->description }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Age: {{ $editroom->age }}</p>
+                    <p>Price: RM {{ $editroom->price }}</p>
                 </div>
             </div>
         </div>

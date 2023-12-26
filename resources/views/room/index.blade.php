@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Phone</th>
-                        <th>Matric</th>
-                        <th>Address</th>
-                        <th>Age</th>
+                        <th>Room Number</th>
+                        <th>Type of Homestay</th>
+                        <th>Room Type</th>
+                        <th>Occupancy</th>
+                        <th>Description</th>
+                        <th>Price</th>
                         <th>Action</th>
                     </tr>
                 </thead>

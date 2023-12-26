@@ -79,7 +79,7 @@
                         <label for="price">Price<span class="text-danger">*</span></label>
                         <input type="number" required class="form-control" name="price" value="{{ old('price') }}">
                         @error('price')
-                            <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">RM {{ $message }}</span>
                         @enderror
                     </div>
                 </div>
