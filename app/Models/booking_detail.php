@@ -22,8 +22,8 @@ class booking_detail extends Model
         'checkout',
     ];
 
-    public function setCheckInAttribute($value)
+    /*public function setCheckInAttribute($value)
     {
         $this->attributes['checkin'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
-    }
+    }*/
 }
