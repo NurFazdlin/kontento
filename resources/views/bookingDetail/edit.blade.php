@@ -43,6 +43,15 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
+                        <label for="email">Email <span class="text-danger">*</span></label>
+                        <input type="number" required class="form-control" name="email" value="{{ $editbookingDetail->email }}">
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-group">
                         <label for="icnumber">IC Number <span class="text-danger">*</span></label>
                         <input type="number" required class="form-control" name="icnumber" value="{{ $editbookingDetail->icnumber }}">
                         @error('icnumber')
