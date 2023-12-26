@@ -52,27 +52,27 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="typeofhomestay">Type of Homestay <span class="text-danger">*</span></label>
-                        <select id="typeofhomestay" name="typeofhomestay" class="form-control" required>
-                            <option value="kontena" {{ old('typeofhomestay') == 'kontena' ? 'selected' : '' }}> HomestaykontenaMelaka </option>
-                            <option value="villaredan" {{ old('typeofhomestay') == 'villaredan' ? 'selected' : '' }}> Villa Redan Homestay </option>
-                            <option value="glamping" {{ old('typeofhomestay') == 'glamping' ? 'selected' : '' }}> Melaka Private Glamping </option>
-                        </select>
-                        @error('typeofhomestay')
+                        <label for="date">Date <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" id="date" name="date" value="{{ old('checkin') }}">
+                        @error('date')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="checkin">Check-In Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkin" name="checkin" value="{{ old('checkin') }}">
-                        @error('checkin')
+                        <label for="staffservice">Staff Service <span class="text-danger">*</span></label>
+                        <select id="staffservice" name="staffservice" class="form-control" required>
+                            <option value="excellent" {{ old('staffservice') == 'excellent' ? 'selected' : '' }}> Excellent </option>
+                            <option value="good" {{ old('staffservice') == 'good' ? 'selected' : '' }}> Good </option>
+                            <option value="fair" {{ old('staffservice') == 'fair' ? 'selected' : '' }}> Fair </option>
+                            <option value="poor" {{ old('staffservice') == 'poor' ? 'selected' : '' }}> Poor </option>
+                        </select>
+                        @error('staffservice')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
-                
 
                 <script type="text/javascript" src="js/datepicker.js"></script>
 
