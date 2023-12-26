@@ -43,15 +43,6 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="email">Email <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="email" value="{{ old('email') }}">
-                        @error('email')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
                         <label for="icnumber">IC Number <span class="text-danger">*</span></label>
                         <input type="number" required class="form-control" name="icnumber" value="{{ old('icnumber') }}">
                         @error('icnumber')
@@ -61,9 +52,9 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="phone_number">Phone Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="phone_number" value="{{ old('phone_number') }}">
-                        @error('phone_number')
+                        <label for="email">Phone Number <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="email" value="{{ old('email') }}">
+                        @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

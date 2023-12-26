@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('rooms.create') }}" class="btn btn-sm btn-primary">Create</a>
+                <a href="{{ route('bookingDetails.create') }}" class="btn btn-sm btn-primary">Create</a>
             </div>
         </div>
 
@@ -26,31 +26,35 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Room Number</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>IC Number</th>
+                        <th>Phone Number</th>
                         <th>Type of Homestay</th>
-                        <th>Room Type</th>
-                        <th>Occupancy</th>
-                        <th>Description</th>
-                        <th>Price</th>
+                        <th>Room Number</th>
+                        <th>Check-In</th>
+                        <th>Check-Out</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($rooms as $room)
+                    @forelse ($bookingDetails as $bookingDetail)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $room->roomnumber }}</td>
-                            <td>{{ $room->typeofhomestay }}</td>
-                            <td>{{ $room->roomtype }}</td>
-                            <td>{{ $room->occupancy }}</td>
-                            <td>{{ $room->description }}</td>
-                            <td>{{ $room->price }}</td>
+                            <td>{{ $bookingDetail->name }}</td>
+                            <td>{{ $bookingDetail->email }}</td>
+                            <td>{{ $bookingDetail->icnumber }}</td>
+                            <td>{{ $bookingDetail->phone_number }}</td>
+                            <td>{{ $bookingDetail->typeofhomestay }}</td>
+                            <td>{{ $bookingDetail->roomnumber }}</td>
+                            <td>{{ $bookingDetail->checkin }}</td>
+                            <td>{{ $bookingDetail->checkout }}</td>
                             <td>
-                                <a href="{{ route('rooms.show', $room->id) }}"
+                                <a href="{{ route('bookingDetails.show', $bookingDetail->id) }}"
                                     class="btn btn-sm btn-primary">Show</a>
-                                <a href="{{ route('rooms.edit', $room->id) }}"
+                                <a href="{{ route('bookingDetails.edit', $bookingDetail->id) }}"
                                     class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('rooms.destroy', $room->id) }}" method="POST"
+                                <form action="{{ route('bookingDetails.destroy', $bookingDetail->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')

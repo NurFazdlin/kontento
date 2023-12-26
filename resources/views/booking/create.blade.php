@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('bookingDetails.index') }}" class="btn btn-sm btn-danger">Back</a>
+                <a href="{{ route('booking.index') }}" class="btn btn-sm btn-danger">Back</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('bookingDetails.store') }}">
+            <form method="POST" action="{{ route('booking.store') }}">
                 @csrf
 
                 <div class="mb-2">
@@ -37,33 +37,6 @@
                         <label for="name">Name <span class="text-danger">*</span></label>
                         <input type="text" required class="form-control" name="name" value="{{ old('name') }}">
                         @error('name')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
-                        <label for="email">Email <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="email" value="{{ old('email') }}">
-                        @error('email')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
-                        <label for="icnumber">IC Number <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="icnumber" value="{{ old('icnumber') }}">
-                        @error('icnumber')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
-                        <label for="phone_number">Phone Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="phone_number" value="{{ old('phone_number') }}">
-                        @error('phone_number')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -86,6 +59,24 @@
                         <label for="roomnumber">Room Number <span class="text-danger">*</span></label>
                         <input type="text" required class="form-control" name="roomnumber" value="{{ old('roomnumber') }}">
                         @error('roomnumber')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-group">
+                        <label for="bookingdate">Booking Date<span class="text-danger">*</span></label>
+                        <input type="number" required class="form-control" name="icnumber" value="{{ old('icnumber') }}">
+                        @error('bookingdate')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-group">
+                        <label for="email">Phone Number <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-control" name="email" value="{{ old('email') }}">
+                        @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

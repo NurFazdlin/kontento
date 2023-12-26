@@ -29,13 +29,13 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('bookingDetails.store') }}">
+            <form method="POST" action="{{ route('bookingDetails.update', $editbookingDetail->id) }}">
                 @csrf
-
+                @method('PUT')
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="name">Name <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="name" value="{{ old('name') }}">
+                        <input type="text" required class="form-control" name="name" value="{{ $editbookingDetail->name }}">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -43,17 +43,8 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="email">Email <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="email" value="{{ old('email') }}">
-                        @error('email')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
                         <label for="icnumber">IC Number <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="icnumber" value="{{ old('icnumber') }}">
+                        <input type="number" required class="form-control" name="icnumber" value="{{ $editbookingDetail->icnumber }}">
                         @error('icnumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -62,7 +53,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="phone_number">Phone Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                        <input type="number" required class="form-control" name="phone_number" value="{{ $editbookingDetail->phone_number }}">
                         @error('phone_number')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -72,9 +63,9 @@
                     <div class="form-group">
                         <label for="typeofhomestay">Type of Homestay <span class="text-danger">*</span></label>
                         <select id="typeofhomestay" name="typeofhomestay" class="form-control" required>
-                            <option value="kontena" {{ old('typeofhomestay') == 'kontena' ? 'selected' : '' }}> HomestaykontenaMelaka </option>
-                            <option value="villaredan" {{ old('typeofhomestay') == 'villaredan' ? 'selected' : '' }}> Villa Redan Homestay </option>
-                            <option value="glamping" {{ old('typeofhomestay') == 'glamping' ? 'selected' : '' }}> Melaka Private Glamping </option>
+                            <option value="kontena" {{ $editbookingDetail->typeofhomestay == 'kontena' ? 'selected' : '' }}> HomestaykontenaMelaka </option>
+                            <option value="villaredan" {{ $editbookingDetail->typeofhomestay == 'villaredan' ? 'selected' : '' }}> Villa Redan Homestay </option>
+                            <option value="glamping" {{ $editbookingDetail->typeofhomestay == 'glamping' ? 'selected' : '' }}> Melaka Private Glamping </option>
                         </select>
                         @error('typeofhomestay')
                             <span class="text-danger">{{ $message }}</span>
@@ -84,7 +75,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="roomnumber">Room Number <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="roomnumber" value="{{ old('roomnumber') }}">
+                        <input type="text" required class="form-control" name="roomnumber" value="{{ $editbookingDetail->roomnumber }}">
                         @error('roomnumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -93,7 +84,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="checkin">Check-In Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkin" name="checkin" value="{{ old('checkin') }}">
+                        <input type="text" required class="form-control" id="checkin" name="checkin" value="{{ $editbookingDetail->checkin }}">
                         @error('checkin')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -102,7 +93,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="checkout">Check-Out Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkout" name="checkout" value="{{ old('checkout') }}">
+                        <input type="text" required class="form-control" id="checkout" name="checkout" value="{{ $editbookingDetail->checkout }}">
                         @error('checkout')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -118,5 +109,4 @@
         </div>
     </div>
 </div>
-
 @endsection
