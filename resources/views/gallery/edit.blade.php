@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('posts.index') }}" class="btn btn-sm btn-danger">Back</a>
+                <a href="{{ route('Galleries.index') }}" class="btn btn-sm btn-danger">Back</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('posts.update', $editgallery->id) }}">
+            <form method="POST" action="{{ route('Galleries.update', $editgallery->id) }}">
                 @csrf
                 @method('PUT')
                 <div class="mb-2">

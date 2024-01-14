@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('posts.index') }}" class="btn btn-sm btn-danger">Back</a>
+                <a href="{{ route('Galleries.index') }}" class="btn btn-sm btn-danger">Back</a>
             </div>
         </div>
 
@@ -24,12 +24,12 @@
 
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Uploaded Images: {{ $post->picture }}</p>
+                    <p>Uploaded Images: {{ $Gallery->picture }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Description: {{ $post->description }}</p>
+                    <p>Description: {{ $Gallery->description }}</p>
                 </div>
             </div>
         </div>

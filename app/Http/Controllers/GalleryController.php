@@ -14,8 +14,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $posts = gallery::get();
-        return view('post.index', compact('posts'));
+        $Galleries = gallery::get();
+        return view('Gallery.index', compact('Galleries'));
     }
 
     /**
@@ -25,7 +25,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('Gallery.create');
     }
 
     /**
@@ -53,12 +53,12 @@ class GalleryController extends Controller
 
         }catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('post.create')->with('error', 'Posts unable to save');
+            return redirect()->route('Gallery.create')->with('error', 'Posts unable to save');
         }
 
         //$input->save();
         gallery::create($input);
-        return redirect()->route('posts.index')
+        return redirect()->route('Galleries.index')
             ->with('success','Post Saved Successfully.')
             ->with('postPictures', $input);
     }
@@ -69,16 +69,16 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($post)
+    public function show($Gallery)
     {
         try {
-            $editposts = gallery::findOrFail($post);
+            $editGalleries = gallery::findOrFail($Gallery);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('posts.index')->with('error', 'Posts not found');
+            return redirect()->route('Galleries.index')->with('error', 'Posts not found');
         }
 
-        return view('post.show',compact('post'));
+        return view('Gallery.show',compact('Gallery'));
     }
 
     /**
@@ -87,15 +87,15 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($post)
+    public function edit($Gallery)
     {
         try {
-            $editposts = gallery::findOrFail($post);
+            $editGalleries = gallery::findOrFail($Gallery);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('posts.index')->with('error', 'Posts not found');
+            return redirect()->route('Galleries.index')->with('error', 'Posts not found');
         }
-        return view('post.edit',compact('post'));
+        return view('Gallery.edit',compact('Gallery'));
     }
 
     /**
@@ -105,7 +105,7 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $post)
+    public function update(Request $request, $Gallery)
     {
         try{
             $request->validate([
@@ -126,10 +126,10 @@ class GalleryController extends Controller
     
         }catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('post.edit', $post)->with('error', 'Posts unable to update');
+            return redirect()->route('Gallery.edit', $Gallery)->with('error', 'Posts unable to update');
         }
-        $post->update($input);
-        return redirect()->route('posts.index')->with('success','Posts Update Successfully');
+        $Gallery->update($input);
+        return redirect()->route('Galleries.index')->with('success','Posts Update Successfully');
     }
 
     /**
@@ -138,17 +138,17 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($post) 
+    public function destroy($Gallery) 
     {
         try {
-            $post = gallery::findOrFail($post);
+            $Gallery = gallery::findOrFail($Gallery);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('posts.index')->with('error', 'Posts not found');
+            return redirect()->route('Galleries.index')->with('error', 'Posts not found');
         }
 
-        $post->delete();
+        $Gallery->delete();
   
-        return redirect()->route('posts.index')->with('success','Posts Deleted Successfully');
+        return redirect()->route('Galleries.index')->with('success','Posts Deleted Successfully');
     }
 }

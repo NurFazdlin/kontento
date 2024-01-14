@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">Create</a>
+                <a href="{{ route('Galleries.create') }}" class="btn btn-sm btn-primary">Create</a>
             </div>
         </div>
 
@@ -31,17 +31,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($posts as $post)
+                    @forelse ($Galleries as $gallery)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $post->picture }}</td>
-                            <td>{{ $post->description }}</td>
+                            <td>{{ $Gallery->picture }}</td>
+                            <td>{{ $Gallery->description }}</td>
                             <td>
-                                <a href="{{ route('posts.show', $post->id) }}"
+                                <a href="{{ route('Galleries.show', $Gallery->id) }}"
                                     class="btn btn-sm btn-primary">Show</a>
-                                <a href="{{ route('posts.edit', $post->id) }}"
+                                <a href="{{ route('Galleries.edit', $Gallery->id) }}"
                                     class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                <form action="{{ route('Galleries.destroy', $Gallery->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')
