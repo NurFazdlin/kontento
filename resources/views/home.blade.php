@@ -42,7 +42,7 @@
       <h6 class="card-title">Special title treatment</h6>
 
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="{{ route('posts.index') }}" class="btn btn-primary">View</a>
+      <a href="{{ route('Galleries.index') }}" class="btn btn-primary">View</a>
     </div>
   </div>
 </div>
@@ -57,7 +57,7 @@
       <h6 class="card-title">Special title treatment</h6>
 
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="{{ route('posts.index') }}" class="btn btn-primary">View</a>
+      <a href="{{ route('Feedbacks.index') }}" class="btn btn-primary">View</a>
     </div>
   </div>
 </div>
