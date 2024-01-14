@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('Feedback.create') }}" class="btn btn-sm btn-primary">Create</a>
+                <a href="{{ route('Feedbacks.create') }}" class="btn btn-sm btn-primary">Create</a>
             </div>
         </div>
 
