@@ -15,6 +15,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('template') }}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('template') }}/dist/css/adminlte.min.css">
+  
+  <!-- Include jQuery and jQuery UI CSS/JS -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Initialize the datepicker -->
+  <script>
+      $(function() {
+          $("#checkin").datepicker();
+          $("#checkout").datepicker();
+      });
+  </script>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

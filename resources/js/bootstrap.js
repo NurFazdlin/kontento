@@ -3,6 +3,8 @@ window._ = loadash;
 import * as Popper from '@popperjs/core';
 window.Popper = Popper;
 import 'bootstrap';
+window.$ = window.jQuery = require('jquery');
+require('jquery-ui/ui/widgets/datepicker');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

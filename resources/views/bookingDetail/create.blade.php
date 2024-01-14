@@ -1,13 +1,6 @@
 @extends('layouts.dashboard')
 
 @section('content')
-
-<head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-</head>
-
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -97,7 +90,7 @@
                         @error('checkin')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div> 
                 </div>
                 <div class="mb-2">
                     <div class="form-group">

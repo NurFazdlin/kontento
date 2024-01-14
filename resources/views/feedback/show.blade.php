@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('bookingDetails.index') }}" class="btn btn-sm btn-danger">Back</a>
+                <a href="{{ route('Feedback.index') }}" class="btn btn-sm btn-danger">Back</a>
             </div>
         </div>
 
@@ -29,37 +29,47 @@
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Email: {{ $editbookingDetail->email }}</p>
-                </div>
-            </div>
-            <div class="mb-2">
-                <div class="form-group">
-                    <p>IC Number: {{ $editbookingDetail->icnumber }}</p>
-                </div>
-            </div>
-            <div class="mb-2">
-                <div class="form-group">
-                    <p>Phone Number: {{ $editbookingDetail->phone_number }}</p>
-                </div>
-            </div>
-            <div class="mb-2">
-                <div class="form-group">
-                    <p>Type of Homestay: {{ $editbookingDetail->typeofhomestay }}</p>
-                </div>
-            </div>
-            <div class="mb-2">
-                <div class="form-group">
                     <p>Room Number: {{ $editbookingDetail->roomnumber }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Check-In: {{ $editbookingDetail->checkin }}</p>
+                    <p>Date: {{ $editbookingDetail->date }}</p>
                 </div>
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Check-Out: {{ $editbookingDetail->checkout }}</p>
+                    <p>Staff Service: {{ $editbookingDetail->staffservice }}</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="form-group">
+                    <p>Cleanliness: {{ $editbookingDetail->cleanliness }}</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="form-group">
+                    <p>Housekeeping: {{ $editbookingDetail->housekeeping }}</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="form-group">
+                    <p>Cafe Food: {{ $editbookingDetail->cafefood }}</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="form-group">
+                    <p>Amenities: {{ $editbookingDetail->amenities }}</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="form-group">
+                    <p>Overall Homestay Rating: {{ $editbookingDetail->overallhomestayrating }}</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <div class="form-group">
+                    <p>Other Comments: {{ $editbookingDetail->othercomments }}</p>
                 </div>
             </div>
         </div>
