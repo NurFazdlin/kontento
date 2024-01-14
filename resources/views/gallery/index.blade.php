@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('bookingDetails.create') }}" class="btn btn-sm btn-primary">Create</a>
+                <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">Create</a>
             </div>
         </div>
 
@@ -26,35 +26,22 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>IC Number</th>
-                        <th>Phone Number</th>
-                        <th>Type of Homestay</th>
-                        <th>Room Number</th>
-                        <th>Check-In</th>
-                        <th>Check-Out</th>
-                        <th>Action</th>
+                        <th>Uploaded Images</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($bookingDetails as $bookingDetail)
+                    @forelse ($posts as $post)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $bookingDetail->name }}</td>
-                            <td>{{ $bookingDetail->email }}</td>
-                            <td>{{ $bookingDetail->icnumber }}</td>
-                            <td>{{ $bookingDetail->phone_number }}</td>
-                            <td>{{ $bookingDetail->typeofhomestay }}</td>
-                            <td>{{ $bookingDetail->roomnumber }}</td>
-                            <td>{{ $bookingDetail->checkin }}</td>
-                            <td>{{ $bookingDetail->checkout }}</td>
+                            <td>{{ $post->picture }}</td>
+                            <td>{{ $post->description }}</td>
                             <td>
-                                <a href="{{ route('bookingDetails.show', $bookingDetail->id) }}"
+                                <a href="{{ route('posts.show', $post->id) }}"
                                     class="btn btn-sm btn-primary">Show</a>
-                                <a href="{{ route('bookingDetails.edit', $bookingDetail->id) }}"
+                                <a href="{{ route('posts.edit', $post->id) }}"
                                     class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('bookingDetails.destroy', $bookingDetail->id) }}" method="POST"
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')

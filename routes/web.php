@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingDetailsController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,14 @@ Route::group(['prefix' => 'bookingDetails', 'as' => 'bookingDetails.'], function
     Route::get('/{bookingDetail}/edit', [BookingDetailsController::class, 'edit'])->name('edit');
     Route::put('/{bookingDetail}/update', [BookingDetailsController::class, 'update'])->name('update');
     Route::delete('/{bookingDetail}/destroy', [BookingDetailsController::class, 'destroy'])->name('destroy');
+});
+
+Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
+    Route::get('/', [GalleryController::class, 'index'])->name('index');
+    Route::get('/create', [GalleryController::class, 'create'])->name('create');
+    Route::post('store', [GalleryController::class, 'store'])->name('store');
+    Route::get('/{post}/show', [GalleryController::class, 'show'])->name('show');
+    Route::get('/{post}/edit', [GalleryController::class, 'edit'])->name('edit');
+    Route::put('/{post}/update', [GalleryController::class, 'update'])->name('update');
+    Route::delete('/{post}/destroy', [GalleryController::class, 'destroy'])->name('destroy');
 });

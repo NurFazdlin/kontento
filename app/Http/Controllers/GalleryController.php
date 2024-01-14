@@ -36,23 +36,31 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'picture' => 'required|picture|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'picture' => 'required|picture|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'description' => 'required',
+            ]);
+    
+            $input = $request->all();
+      
+            if ($picture = $request->file('picture')) {
+                $destinationPath = 'pictures/';
+                $postPicture = date('YmdHis') . "." . $picture->getClientOriginalExtension();
+                $picture->move($destinationPath, $postPicture);
+                $input['picture'] = "$postPicture";
+            }
 
-        $input = $request->all();
-  
-        if ($picture = $request->file('picture')) {
-            $destinationPath = 'pictures/';
-            $postPicture = date('YmdHis') . "." . $picture->getClientOriginalExtension();
-            $picture->move($destinationPath, $postPicture);
-            $input['picture'] = "$postPicture";
+        }catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('post.create')->with('error', 'Posts unable to save');
         }
-  
+
+        //$input->save();
         gallery::create($input);
-   
-        return redirect()->route('posts.index')->with('success','Post Saved Successfully.');
+        return redirect()->route('posts.index')
+            ->with('success','Post Saved Successfully.')
+            ->with('postPictures', $input);
     }
 
     /**
@@ -63,6 +71,13 @@ class GalleryController extends Controller
      */
     public function show($post)
     {
+        try {
+            $editposts = gallery::findOrFail($post);
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('posts.index')->with('error', 'Posts not found');
+        }
+
         return view('post.show',compact('post'));
     }
 
@@ -74,6 +89,12 @@ class GalleryController extends Controller
      */
     public function edit($post)
     {
+        try {
+            $editposts = gallery::findOrFail($post);
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('posts.index')->with('error', 'Posts not found');
+        }
         return view('post.edit',compact('post'));
     }
 
@@ -86,25 +107,29 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $post)
     {
-        $request->validate([
-            'picture' => 'required|picture|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'required',
-        ]);
+        try{
+            $request->validate([
+                'picture' => 'required|picture|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'description' => 'required',
+            ]);
 
-        $input = $request->all();
-  
-        if ($picture = $request->file('picture')) {
-            $destinationPath = 'pictures/';
-            $postPicture = date('YmdHis') . "." . $picture->getClientOriginalExtension();
-            $picture->move($destinationPath, $postPicture);
-            $input['picture'] = "$postPicture";
-        } else{
-            unset($input['picture']);
+            $input = $request->all();
+    
+            if ($picture = $request->file('picture')) {
+                $destinationPath = 'pictures/';
+                $postPicture = date('YmdHis') . "." . $picture->getClientOriginalExtension();
+                $picture->move($destinationPath, $postPicture);
+                $input['picture'] = "$postPicture";
+            } else{
+                unset($input['picture']);
+            }
+    
+        }catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('post.edit', $post)->with('error', 'Posts unable to update');
         }
-  
-            $post->update($input);
-  
-            return redirect()->route('posts.index')->with('success','Post Update Successfully');
+        $post->update($input);
+        return redirect()->route('posts.index')->with('success','Posts Update Successfully');
     }
 
     /**
@@ -115,8 +140,15 @@ class GalleryController extends Controller
      */
     public function destroy($post) 
     {
+        try {
+            $post = gallery::findOrFail($post);
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('posts.index')->with('error', 'Posts not found');
+        }
+
         $post->delete();
   
-        return redirect()->route('posts.index')->with('success','Post Deleted Successfully');
+        return redirect()->route('posts.index')->with('success','Posts Deleted Successfully');
     }
 }
