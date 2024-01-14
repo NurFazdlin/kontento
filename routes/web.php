@@ -44,12 +44,12 @@ Route::group(['prefix' => 'bookingDetails', 'as' => 'bookingDetails.'], function
     Route::delete('/{bookingDetail}/destroy', [BookingDetailsController::class, 'destroy'])->name('destroy');
 });
 
-Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
+Route::group(['prefix' => 'Galleries', 'as' => 'Galleries.'], function () {
     Route::get('/', [GalleryController::class, 'index'])->name('index');
     Route::get('/create', [GalleryController::class, 'create'])->name('create');
     Route::post('store', [GalleryController::class, 'store'])->name('store');
-    Route::get('/{post}/show', [GalleryController::class, 'show'])->name('show');
-    Route::get('/{post}/edit', [GalleryController::class, 'edit'])->name('edit');
-    Route::put('/{post}/update', [GalleryController::class, 'update'])->name('update');
-    Route::delete('/{post}/destroy', [GalleryController::class, 'destroy'])->name('destroy');
+    Route::get('/{Gallery}/show', [GalleryController::class, 'show'])->name('show');
+    Route::get('/{Gallery}/edit', [GalleryController::class, 'edit'])->name('edit');
+    Route::put('/{Gallery}/update', [GalleryController::class, 'update'])->name('update');
+    Route::delete('/{Gallery}/destroy', [GalleryController::class, 'destroy'])->name('destroy');
 });
