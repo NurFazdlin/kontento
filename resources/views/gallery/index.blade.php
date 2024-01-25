@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($Galleries as $gallery)
+                    @forelse ($Galleries as $Gallery)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $Gallery->picture }}</td>

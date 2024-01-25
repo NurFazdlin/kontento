@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('Galleries.store') }}">
+            <form method="POST" action="{{ route('Galleries.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-2">
@@ -39,15 +39,7 @@
                         @endif
                         
                         <label for="picture">Upload your images here: <span class="text-danger">*</span></label>
-                        <input type="file" required class="form-control"  name="picture" value="{{ old('picture') }}" accept="picture/*" multiple>
-                        <button type="submit">Upload Images</button>
-                        
-                        @if(session('postPictures'))
-                            <h2>Uploaded Images:</h2>
-                            @foreach(session('postPictures') as $postPicture)
-                                <img src="{{ asset($postPicture) }}" alt="Uploaded Image">
-                            @endforeach
-                        @endif
+                        <input type="file" required class="form-control"  name="picture[]" value="{{ old('picture[]') }}" accept="picture/*" multiple="multiple">
 
                         @error('picture')
                             <span class="text-danger">{{ $message }}</span>

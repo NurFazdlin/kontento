@@ -57,10 +57,10 @@ class BookingDetailsController extends Controller
             $storeBookingDetails->checkout = $request->checkout;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('bookingDetail.create')->with('error', 'Booking details unable to save');
+            return redirect()->route('bookingDetails.create')->with('error', 'Booking details unable to save');
         }
         $storeBookingDetails->save();
-        return redirect()->route('bookingDetail.index')->with('success', 'Booking details saved successfully');
+        return redirect()->route('bookingDetails.index')->with('success', 'Booking details saved successfully');
     }
 
     /**

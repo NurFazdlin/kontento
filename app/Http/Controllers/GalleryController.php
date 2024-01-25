@@ -36,31 +36,52 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+        /*try {
             $request->validate([
                 'picture' => 'required|picture|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'description' => 'required',
             ]);
     
             $input = $request->all();
-      
+            
             if ($picture = $request->file('picture')) {
                 $destinationPath = 'pictures/';
                 $postPicture = date('YmdHis') . "." . $picture->getClientOriginalExtension();
                 $picture->move($destinationPath, $postPicture);
                 $input['picture'] = "$postPicture";
             }
-
+            gallery::create($input);
+        
         }catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('Gallery.create')->with('error', 'Posts unable to save');
+            return redirect()->route('Galleries.create')->with('error', 'Posts unable to save');
         }
 
         //$input->save();
-        gallery::create($input);
-        return redirect()->route('Galleries.index')
-            ->with('success','Post Saved Successfully.')
-            ->with('postPictures', $input);
+            return redirect()->route('Galleries.index')
+                ->with('success','Post Saved Successfully.')
+                ->with('postPictures', $input);*/
+                $input=$request->all();
+                $picture=array();
+                if($files=$request->file('picture')){
+                    foreach($files as $file){
+                        $name=$file->getClientOriginalName();
+                        $file->move('picture',$name);
+                        $picture[]=$name;
+                    }
+                }
+                /*Insert your data*/
+            
+                gallery::insert( [
+                    'picture'=>  implode("|",$picture),
+                    'description' =>$input['description'],
+                    //you can put other insertion here
+                ]);
+            
+            
+                return redirect()->route('Galleries.index')
+                ->with('success','Post Saved Successfully.')
+                ->with('postPictures', $input);      
     }
 
     /**
@@ -126,7 +147,7 @@ class GalleryController extends Controller
     
         }catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('Gallery.edit', $Gallery)->with('error', 'Posts unable to update');
+            return redirect()->route('Galleries.edit', $Gallery)->with('error', 'Posts unable to update');
         }
         $Gallery->update($input);
         return redirect()->route('Galleries.index')->with('success','Posts Update Successfully');
