@@ -4,8 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <div class="col-lg-12">
@@ -39,7 +38,7 @@
                         @endif
                         
                         <label for="picture">Upload your images here: <span class="text-danger">*</span></label>
-                        <input type="file" required class="form-control"  name="picture[]" value="{{ old('picture[]') }}" accept="picture/*" multiple="multiple">
+                        <input type="file" class="form-control-file" name="picture[]" value="{{ old('picture') }}" accept="picture/*" multiple required>
 
                         @error('picture')
                             <span class="text-danger">{{ $message }}</span>
@@ -55,13 +54,13 @@
                         @enderror
                     </div>
                 </div>
-
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-block btn-success">Submit</button>
-                </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 @endsection

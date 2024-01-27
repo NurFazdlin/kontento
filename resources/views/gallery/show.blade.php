@@ -25,6 +25,11 @@
             <div class="mb-2">
                 <div class="form-group">
                     <p>Uploaded Images: {{ $Gallery->picture }}</p>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <img src="{{ asset($Gallery->$picture) }}" class="img-fluid" alt="Uploaded Image">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mb-2">
