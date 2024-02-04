@@ -86,7 +86,8 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="checkin">Check-In Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkin" name="checkin" value="{{ old('checkin') }}">
+                        <input type="date" required class="form-control float-right" id="checkin" name="checkin" value="{{ old('checkin') }}">
+                        
                         @error('checkin')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -95,7 +96,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="checkout">Check-Out Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkout" name="checkout" value="{{ old('checkout') }}">
+                        <input type="date" required class="form-control" id="checkout" name="checkout" value="{{ old('checkout') }}">
                         @error('checkout')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

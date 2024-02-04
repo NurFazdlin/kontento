@@ -116,7 +116,7 @@ class BookingDetailsController extends Controller
         ]);*/
         
         try {
-            $storeBookingDetails = new booking_detail();
+            $storeBookingDetails = booking_detail::findOrFail($bookingDetail);
             $storeBookingDetails->name = $request->name;
             $storeBookingDetails->email = $request->email;
             $storeBookingDetails->icnumber = $request->icnumber;

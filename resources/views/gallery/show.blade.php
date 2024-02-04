@@ -22,21 +22,18 @@
                 </div>
             @endif
 
-            <div class="mb-2">
-                <div class="form-group">
-                    <p>Uploaded Images: {{ $Gallery->picture }}</p>
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <img src="{{ asset($Gallery->$picture) }}" class="img-fluid" alt="Uploaded Image">
-                        </div>
+            @if($editGalleries)
+                @foreach(explode('|', $editGalleries->picture) as $gallery)
+                    <div>
+                        <img src="{{ asset($gallery) }}" alt="Gallery Image">
                     </div>
+                @endforeach
+                <div>
+                    <p>Description: {{ $editGalleries->description }}</p>
                 </div>
-            </div>
-            <div class="mb-2">
-                <div class="form-group">
-                    <p>Description: {{ $Gallery->description }}</p>
-                </div>
-            </div>
+            @else
+                <p>No galleries found.</p>
+            @endif
         </div>
     </div>
 </div>

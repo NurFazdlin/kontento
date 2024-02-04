@@ -2,12 +2,6 @@
 
 @section('content')
 
-<head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-</head>
-
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -44,7 +38,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="email">Email <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="email" value="{{ $editbookingDetail->email }}">
+                        <input type="text" required class="form-control" name="email" value="{{ $editbookingDetail->email }}">
                         @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -62,7 +56,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="phone_number">Phone Number <span class="text-danger">*</span></label>
-                        <input type="number" required class="form-control" name="phone_number" value="{{ $editbookingDetail->phone_number }}">
+                        <input type="text" required class="form-control" name="phone_number" value="{{ $editbookingDetail->phone_number }}">
                         @error('phone_number')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -93,7 +87,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="checkin">Check-In Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkin" name="checkin" value="{{ $editbookingDetail->checkin }}">
+                        <input type="date" required class="form-control" id="checkin" name="checkin" value="{{ $editbookingDetail->checkin }}">
                         @error('checkin')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -102,7 +96,7 @@
                 <div class="mb-2">
                     <div class="form-group">
                         <label for="checkout">Check-Out Date <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" id="checkout" name="checkout" value="{{ $editbookingDetail->checkout }}">
+                        <input type="date" required class="form-control" id="checkout" name="checkout" value="{{ $editbookingDetail->checkout }}">
                         @error('checkout')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

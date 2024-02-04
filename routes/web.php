@@ -48,8 +48,8 @@ Route::group(['prefix' => 'Galleries', 'as' => 'Galleries.'], function () {
     Route::get('/', [GalleryController::class, 'index'])->name('index');
     Route::get('/create', [GalleryController::class, 'create'])->name('create');
     Route::post('store', [GalleryController::class, 'store'])->name('store');
-    Route::get('/{Gallery}/show', [GalleryController::class, 'show'])->name('show');
-    Route::get('/{Gallery}/edit', [GalleryController::class, 'edit'])->name('edit');
-    Route::put('/{Gallery}/update', [GalleryController::class, 'update'])->name('update');
-    Route::delete('/{Gallery}/destroy', [GalleryController::class, 'destroy'])->name('destroy');
+    Route::get('/{gallery}/show', [GalleryController::class, 'show'])->name('show');
+    Route::get('/{gallery}/edit', [GalleryController::class, 'edit'])->name('edit');
+    Route::put('/{gallery}/update', [GalleryController::class, 'update'])->name('update');
+    Route::delete('/{gallery}/destroy', [GalleryController::class, 'destroy'])->name('destroy');
 });
