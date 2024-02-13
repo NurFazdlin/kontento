@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\BookingDetailsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RoomsController;
@@ -18,11 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Auth::routes();
+Route::get('/login',[AuthManager::class, 'login'])->name('login');
+Route::post('/login',[AuthManager::class, 'loginPost'])->name('login.post');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/register',[AuthManager::class, 'register'])->name('register');
+Route::post('/register',[AuthManager::class, 'registerPost'])->name('register.post');
+
+Route::get('/logout',[AuthManager::class, 'logout'])->name('logout');
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'rooms', 'as' => 'rooms.'], function () {
     Route::get('/', [RoomsController::class, 'index'])->name('index');

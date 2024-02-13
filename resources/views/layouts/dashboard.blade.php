@@ -26,9 +26,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-  <link rel="stylesheet" href="{{ asset('template') }}/plugins/daterangepicker/daterangepicker.css">
   
+  <!-- Add these links in your HTML head section -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.1/daterangepicker.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.1/daterangepicker.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -310,13 +314,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- jQuery -->
 <script src="{{ asset('template') }}/plugins/jquery/jquery.min.js"></script>
-<script src="{{ asset('template') }}/plugins/daterangepicker/daterangepicker.js"></script>
 
 <script>
   $(function() {
-    $("#checkin").daterangepicker()
-    //$( "#checkin" ).datepicker();
-    $("#checkout").datepicker()
+    //$('#checkin').daterangepicker()
+    $( "#checkin" ).datepicker();
+    //$('input[name="#checkin"]').daterangepicker();
+    $('#checkout').datepicker()
   })
 </script>
 
@@ -324,5 +328,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('template') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('template') }}/dist/js/adminlte.min.js"></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('template') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('template') }}/plugins/daterangepicker/daterangepicker.js"></script>
 </body>
 </html>
