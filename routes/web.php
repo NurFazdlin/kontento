@@ -19,17 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+});//->name('home');
 
-Route::get('/login',[AuthManager::class, 'login'])->name('login');
+/*Route::get('/login',[AuthManager::class, 'login'])->name('login');
 Route::post('/login',[AuthManager::class, 'loginPost'])->name('login.post');
 
 Route::get('/register',[AuthManager::class, 'register'])->name('register');
 Route::post('/register',[AuthManager::class, 'registerPost'])->name('register.post');
 
-Route::get('/logout',[AuthManager::class, 'logout'])->name('logout');
+Route::get('/logout',[AuthManager::class, 'logout'])->name('logout');*/
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'rooms', 'as' => 'rooms.'], function () {
     Route::get('/', [RoomsController::class, 'index'])->name('index');
