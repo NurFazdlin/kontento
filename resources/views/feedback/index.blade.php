@@ -3,11 +3,6 @@
 @section('content')
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header">
-            <div class="d-flex justify-content-end">
-                <a href="{{ route('Feedbacks.create') }}" class="btn btn-sm btn-primary">Create</a>
-            </div>
-        </div>
 
         <div class="card-body">
             @if ($message = Session::get('success'))

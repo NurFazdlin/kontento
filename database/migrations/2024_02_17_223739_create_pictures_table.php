@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('galleries', function (Blueprint $table) {
-            $table->id(); 
-            $table->enum('typeofhomestay', ['kontena','villaredan','glamping']);
-            $table->string('description');
-            $table->string('cover');
+        Schema::create('pictures', function (Blueprint $table) {
+            $table->id();
+            $table->string("picture")->nullable();
+            $table->foreignId("Gallery_id")->constraint("Galleries")->onDelete("cascade")->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galleries');
+        Schema::dropIfExists('pictures');
     }
 };

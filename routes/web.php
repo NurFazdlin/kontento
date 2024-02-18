@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\BookingDetailsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\FeedbacksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::post('/register',[AuthManager::class, 'registerPost'])->name('register.po
 Route::get('/logout',[AuthManager::class, 'logout'])->name('logout');*/
 
 Auth::routes();
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -61,4 +64,17 @@ Route::group(['prefix' => 'Galleries', 'as' => 'Galleries.'], function () {
     Route::get('/{gallery}/edit', [GalleryController::class, 'edit'])->name('edit');
     Route::put('/{gallery}/update', [GalleryController::class, 'update'])->name('update');
     Route::delete('/{gallery}/destroy', [GalleryController::class, 'destroy'])->name('destroy');
+    Route::delete('/{gallery}/deleteimage', [GalleryController::class, 'deleteimage']);
+    Route::delete('/{gallery}/deletecover', [GalleryController::class, 'deletecover']);
 });
+
+Route::group(['prefix' => 'Feedbacks', 'as' => 'Feedbacks.'], function () {
+    Route::get('/', [FeedbacksController::class, 'index'])->name('index');
+    //Route::get('/create', [FeedbacksController::class, 'create'])->name('create');
+    Route::post('store', [FeedbacksController::class, 'store'])->name('store');
+    Route::get('/{Feedbacks}/show', [FeedbacksController::class, 'show'])->name('show');
+    /*Route::get('/{Feedbacks}/edit', [FeedbacksController::class, 'edit'])->name('edit');
+    Route::put('/{Feedbacks}/update', [FeedbacksController::class, 'update'])->name('update');*/
+    Route::delete('/{Feedbacks}/destroy', [FeedbacksController::class, 'destroy'])->name('destroy');
+});
+

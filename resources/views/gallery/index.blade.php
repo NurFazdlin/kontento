@@ -26,16 +26,18 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Uploaded Images</th>
+                        <th>Type of Homestay</th>
                         <th>Description</th>
+                        <th>Cover</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($Galleries as $Gallery)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $Gallery->picture }}</td>
+                            <td>{{ $Gallery->typeofhomestay }}</td>
                             <td>{{ $Gallery->description }}</td>
+                            <td><img src="cover/{{ $Gallery->cover }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
                             <td>
                                 <a href="{{ route('Galleries.show', $Gallery->id) }}"
                                     class="btn btn-sm btn-primary">Show</a>

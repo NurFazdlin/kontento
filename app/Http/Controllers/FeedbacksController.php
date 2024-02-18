@@ -24,7 +24,7 @@ class FeedbacksController extends Controller
      */
     public function create()
     {
-        return view('Feedback.create');
+        //return view('Feedback.create');
     }
 
     /**
@@ -46,23 +46,23 @@ class FeedbacksController extends Controller
         ]);*/
         
         try {
-            $storeFeedback = new feedback();
-            $storeFeedback->name = $request->name;
-            $storeFeedback->roomnumber = $request->roomnumber;
-            $storeFeedback->date = $request->date;
-            $storeFeedback->staffservice = $request->staffservice;
-            $storeFeedback->cleanliness = $request->cleanliness;
-            $storeFeedback->housekeeping = $request->housekeeping;
-            $storeFeedback->cafefood = $request->cafefood;
-            $storeFeedback->amenities = $request->amenities;
-            $storeFeedback->overallhomestayrating = $request->overallhomestayrating;
-            $storeFeedback->othercomments = $request->othercomments;
+            $storeFeedbacks = new feedback();
+            $storeFeedbacks->name = $request->name;
+            $storeFeedbacks->roomnumber = $request->roomnumber;
+            $storeFeedbacks->date = $request->date;
+            $storeFeedbacks->staffservice = $request->staffservice;
+            $storeFeedbacks->cleanliness = $request->cleanliness;
+            $storeFeedbacks->housekeeping = $request->housekeeping;
+            $storeFeedbacks->cafefood = $request->cafefood;
+            $storeFeedbacks->amenities = $request->amenities;
+            $storeFeedbacks->overallhomestayrating = $request->overallhomestayrating;
+            $storeFeedbacks->othercomments = $request->othercomments;
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('Feedback.create')->with('error', 'Feedback unable to save');
+            return back()->with('error', 'Feedback not found');
         }
-        $storeFeedback->save();
-        return redirect()->route('Feedback.index')->with('success', 'Feedback saved successfully');
+        $storeFeedbacks->save();
+        return redirect()->route('Feedbacks.index')->with('success', 'Feedback saved successfully');
     }
 
     /**
@@ -77,9 +77,11 @@ class FeedbacksController extends Controller
             $editFeedback = feedback::findOrFail($Feedback);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return redirect()->route('Feedbacks.index')->with('error', 'Feedback not found');
+            //return redirect()->route('Feedbacks.index')->with('error', 'Feedback not found');
+            return back()->with('error', 'Feedback not found');
         }
-        return view('Feedback.show', compact('editFeedback'));
+        //return view('Feedback.show', compact('editFeedback'));
+        return back(compact('editFeedback'));
     }
 
     /**
@@ -88,15 +90,15 @@ class FeedbacksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Feedback)
+    public function edit($feedbacks)
     {
-        try {
+        /*try {
             $editFeedback = feedback::findOrFail($Feedback);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('Feedbacks.index')->with('error', 'Feedback not found');
         }
-        return view('Feedback.edit', compact('editFeedback'));
+        return view('Feedback.edit', compact('editFeedback'));*/
     }
 
     /**
@@ -117,7 +119,7 @@ class FeedbacksController extends Controller
             'age'           => 'required|numeric|between:17,90',
         ]);*/
         
-        try {
+        /*try {
             $storeFeedback = new feedback();
             $storeFeedback->name = $request->name;
             $storeFeedback->roomnumber = $request->roomnumber;
@@ -134,7 +136,7 @@ class FeedbacksController extends Controller
             return redirect()->route('Feedbacks.edit', $Feedback)->with('error', 'Feedback unable to update');
         }
         $storeFeedback->save();
-        return redirect()->route('Feedbacks.index')->with('success', 'Feedback updated successfully');
+        return redirect()->route('Feedbacks.index')->with('success', 'Feedback updated successfully');*/
     }
 
     /**

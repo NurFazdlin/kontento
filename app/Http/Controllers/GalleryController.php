@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\gallery;
+use App\Models\Pictures;
+use Illuminate\Support\Facades\File;
 
 class GalleryController extends Controller
 {
@@ -14,8 +16,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $Galleries = gallery::get();
-        return view('Gallery.index', compact('Galleries'));
+        /*$Galleries = gallery::get();
+        return view('Gallery.index', compact('Galleries'));*/
+        $Galleries=gallery::all();
+        return view('Gallery.index')->with('Galleries',$Galleries);
     }
 
     /**
@@ -55,60 +59,11 @@ class GalleryController extends Controller
         }catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('Galleries.create')->with('error', 'Posts unable to save');
-        }
+        }*/
 
-        //$input->save();
-            return redirect()->route('Galleries.index')
-                ->with('success','Post Saved Successfully.')
-                ->with('postPictures', $input);
-                $input=$request->all();
-                $picture=array();
-                if($files=$request->file('picture')){
-                    foreach($files as $file){
-                        $name=$file->getClientOriginalName();
-                        $file->move('picture',$name);
-                        $picture[]=$name;
-                    }
-                }
-                /*Insert your data
-            
-                gallery::insert( [
-                    'picture'=>  implode("|",$picture),
-                    'description' =>$input['description'],
-                    //you can put other insertion here
-                ]);
-            
-            
-                return redirect()->route('Galleries.index')
-                ->with('success','Post Saved Successfully.')
-                ->with('postPictures', $input); 
-                $request->validate([
-                    'picture.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'description' => 'required|string|max:255',
-                ]);
         
-                try {
-                    $storeGallery = new gallery();
-                    
-                    $picturesPaths = [];
         
-                    foreach ($request->file('picture') as $picture) {
-                        $picturesName = time() . '_' . $picture->getClientOriginalName();
-                        $picture->move(public_path('picture'), $picturesName);
-                        $picturesPaths[] = 'picture/' . $picturesName;
-                    }
-
-                    $storeGallery->picture = $picturesPaths;
-                    $storeGallery->description = $request->description;
-                    
-                }catch (\Exception $e) {
-                    \Log::error($e->getMessage());
-                    return redirect()->route('Galleries.create')->with('error', 'Student unable to save');
-                }
-                $storeGallery->save();
-                return redirect()->route('Galleries.index')->with('success', 'Student saved successfully');*/
-        
-            try {
+            /* ni yg dh jadikk try {
                 //$input=$request->all();
                 $picture = [];
                 //if($files=$request->file('picture')){
@@ -121,7 +76,7 @@ class GalleryController extends Controller
                         $picture[]= $name;
                     }
                 }
-                /*Insert your data*/
+                /*Insert your data
             
                 gallery::create( [
                     'picture'=>  implode('<br>',$picture),
@@ -134,7 +89,85 @@ class GalleryController extends Controller
             } catch (\Exception $e) {
                 \Log::error($e->getMessage());
                 return redirect()->route('Galleries.create')->with('error', 'Student unable to save');
+            }*/
+
+            //ni drpd youtube try{
+
+                /*$request->validate([
+                    'picture' => 'required|picture|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'description' => 'required',
+                ]);
+
+                if($request->hasFile("cover")){
+                    $file=$request->file("cover");
+                    $pictureName=time().'_'.$file->getClientOriginalName();
+                    $file->move(\public_path("cover/"),$pictureName);
+        
+                   $Gallery =new gallery([
+                        "typeofhomestay" =>$request->type,
+                        "description" =>$request->description,
+                        "cover" =>$pictureName,
+                    ]);
+                    $Gallery->save();
+                }
+    
+                if($request->hasFile("pictures")){
+                    $files=$request->file("pictures");
+                    foreach($files as $file){
+                        $pictureName=time().'_'.$file->getClientOriginalName();
+                        $request['Gallery_id']=$Gallery->id;
+                        $request['picture']=$pictureName;
+                        $file->move(\public_path("/pictures"),$pictureName);
+                        Pictures::create($request->all());
+    
+                    }
+                }
+                return redirect()->route('Galleries.index')->with('success', 'Student saved successfully');
+            /*} catch (\Exception $e) {
+                \Log::error($e->getMessage());
+                return redirect()->route('Galleries.create')->with('error', 'Student unable to save');
+            }*/
+
+            $Gallery = new Gallery([
+                "typeofhomestay" => $request->type,
+                "description" => $request->description,
+            ]);
+            
+            if ($request->hasFile("cover")) {
+                $file = $request->file("cover");
+                if ($file->isValid()) {
+                    \Log::info('File Information:', [
+                        'Original Name' => $file->getClientOriginalName(),
+                        'Size' => $file->getSize(),
+                        // Add more information as needed
+                    ]);
+                    $pictureName = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path("cover/"), $pictureName);
+                    $Gallery->cover = $pictureName;
+                }
             }
+            
+            $Gallery->save();
+            
+            // Check if there are pictures to upload
+            if ($request->hasFile("pictures")) {
+                $files = $request->file("pictures");
+                foreach ($files as $file) {
+                    $pictureName = time() . '_' . $file->getClientOriginalName();
+                    // Create Pictures model instance
+                    $picture = new Pictures([
+                        "Gallery_id" => $Gallery->id,
+                        "picture" => $pictureName,
+                    ]);
+                    // Move file to the correct directory
+                    $file->move(public_path("/pictures"), $pictureName);
+                    // Save the picture record
+                    $picture->save();
+                }
+            }
+            
+            return redirect()->route('Galleries.index')->with('success', 'Gallery saved successfully');
+            
     }
 
     /**
@@ -145,7 +178,7 @@ class GalleryController extends Controller
      */
     public function show($Gallery)
     {
-        try {
+        /*try {
             $editGalleries = gallery::findOrFail($Gallery);
             //$editGalleries = gallery::all();
         } catch (\Exception $e) {
@@ -153,7 +186,7 @@ class GalleryController extends Controller
             return redirect()->route('Galleries.index')->with('error', 'Posts not found');
         }
 
-        return view('Gallery.show',compact('editGalleries'));
+        return view('Gallery.show',compact('editGalleries'));*/
     }
 
     /**
@@ -162,15 +195,17 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Gallery)
+    public function edit(/*$Gallery*/ $id)
     {
         try {
-            $editGalleries = gallery::findOrFail($Gallery);
+            //$Galleries = gallery::findOrFail($Gallery);
+            $Galleries=gallery::findOrFail($id);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('Galleries.index')->with('error', 'Posts not found');
         }
-        return view('Gallery.edit',compact('editGalleries'));
+        //return view('Gallery.edit',compact('editGalleries'));
+        return view('Gallery.edit')->with('Galleries',$Galleries);
     }
 
     /**
@@ -180,12 +215,12 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $Gallery)
+    public function update(Request $request, /*$Gallery*/ $id)
     {
-        $request->validate([
+        /*$request->validate([
             'picture.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string|max:255',
-        ]);
+        ]);*/
 
         /*try {
             $storeGallery = gallery::findOrFail($Gallery);
@@ -241,14 +276,14 @@ class GalleryController extends Controller
             return redirect()->route('Galleries.edit', $Gallery)->with('error', 'Student unable to save');
         }*/
 
-        try {
+        /*latest and jadik jugakkkkkkkkk try {
             $gallery = Gallery::findOrFail($Gallery);
     
             // Validate the request data
             /*$request->validate([
                 'newImages.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'description' => 'nullable|string',
-            ]);*/
+            ]);
     
             // Update the description
             $gallery->description = $request->input('description', $gallery->description);
@@ -278,7 +313,78 @@ class GalleryController extends Controller
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('Galleries.edit', $Gallery)->with('error', 'Gallery unable to update');
+        }*/
+
+        /* try tryyyyyyyyyyyy ehekehek try{
+            $Gallery=gallery::findOrFail($id);
+            if($request->hasFile("cover")){
+                if (File::exists("cover/".$Gallery->cover)) {
+                    File::delete("cover/".$Gallery->cover);
+                }
+                $file=$request->file("cover");
+                $Gallery->cover=time()."_".$file->getClientOriginalName();
+                $file->move(\public_path("/cover"),$Gallery->cover);
+                $request['cover']=$Gallery->cover;
+            }
+
+                $Gallery->update([
+                    "typeofhomestay" =>$request->type,
+                    "description" =>$request->description,
+                    "cover"=>$Gallery->cover,
+                ]);
+
+                /*if($request->hasFile("pictures")){
+                    $files=$request->file("pictures");
+                    foreach($files as $file){
+                        $pictureName=time().'_'.$file->getClientOriginalName();
+                        $request["Gallery_id"]=$id;
+                        $request["picture"]=$pictureName;
+                        $file->move(\public_path("pictures"),$pictureName);
+                        Pictures::create($request->all());
+
+                    }
+                }
+
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('Galleries.edit', $Gallery)->with('error', 'Gallery unable to update');
+        }*/
+
+        $Gallery=gallery::findOrFail($id);
+        $Gallery->update([
+            "typeofhomestay" =>$request->type,
+            "description" =>$request->description,
+            "cover"=>$Gallery->cover,
+        ]);
+
+        if($request->hasFile("cover")){
+            if (File::exists("cover/".$Gallery->cover)) {
+                File::delete("cover/".$Gallery->cover);
+            }
+            $file=$request->file("cover");
+            $Gallery->cover=time()."_".$file->getClientOriginalName();
+            $file->move(\public_path("/cover"),$Gallery->cover);
+            $request['cover']=$Gallery->cover;
         }
+
+        if ($request->hasFile("pictures")) {
+            $files = $request->file("pictures");
+            foreach ($files as $file) {
+                $pictureName = time() . '_' . $file->getClientOriginalName();
+                // Create Pictures model instance
+                $picture = new Pictures([
+                    "Gallery_id" => $Gallery->id,
+                    "picture" => $pictureName,
+                ]);
+                // Move file to the correct directory
+                $file->move(public_path("/pictures"), $pictureName);
+                // Save the picture record
+                $picture->save();
+            }
+        }
+
+        return redirect()->route('Galleries.index')->with('success', 'Gallery saved successfully');
+
     }
 
     /**
@@ -287,9 +393,9 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($Gallery) 
+    public function destroy(/*$Gallery*/ $id) 
     {
-        try {
+        /*try {
             $Gallery = gallery::findOrFail($Gallery);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
@@ -298,6 +404,49 @@ class GalleryController extends Controller
 
         $Gallery->delete();
   
+        return redirect()->route('Galleries.index')->with('success','Posts Deleted Successfully');*/
+
+        try{
+            $Galleries=gallery::findOrFail($id);
+
+            if (File::exists("cover/".$Galleries->cover)) {
+                File::delete("cover/".$Galleries->cover);
+            }
+            $pictures=Pictures::where("Gallery_id",$Galleries->id)->get();
+            foreach($pictures as $picture){
+                if (File::exists("pictures/".$picture->picture)) {
+                    File::delete("pictures/".$picture->picture);
+                }
+            }
+        }catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('Galleries.index')->with('error', 'Posts not found');
+        }
+
+        $Galleries->delete();
+  
         return redirect()->route('Galleries.index')->with('success','Posts Deleted Successfully');
+
+    }
+
+    //baru tambahhhh
+    public function deleteimage($id){
+        $pictures=Pictures::findOrFail($id);
+        if (File::exists("pictures/".$pictures->picture)) {
+           File::delete("pictures/".$pictures->picture);
+        }
+
+       Pictures::find($id)->delete();
+       return redirect()->route('Galleries.index')->with('success','Pictures Deleted Successfully');
+       //return back();
+   }
+
+   public function deletecover($id){
+        $cover=gallery::findOrFail($id)->cover;
+        if (File::exists("cover/".$cover)) {
+            File::delete("cover/".$cover);
+        }
+        return redirect()->route('Galleries.index')->with('success','Covers Deleted Successfully');
+        //return back();
     }
 }

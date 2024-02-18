@@ -23,41 +23,76 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('Galleries.update', $editGalleries->id) }}" enctype="multipart/form-data">
+            
+
+            <form method="POST" action="{{ route('Galleries.update', $Galleries->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                <!-- Existing Images Section -->
-                <div class="mb-2">
-                    <h2>Existing Images:</h2>
-                    @foreach(explode('|', $editGalleries->picture) as $gallery)
-                        <div class="image-container">
-                            <img src="{{ asset($gallery) }}" alt="Existing Image">
-                            <!-- Input for editing existing images -->
-                            <input type="file" class="form-control" name="edit_picture[]" accept="picture/*">
-                            <!-- Button to remove existing images -->
-                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmRemoveImage(this, this.parentElement)">Remove Image</button>
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- Upload New Images Section -->
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="new_picture">Upload new images here <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="new_picture[]" multiple>
-                        @error('new_picture')
+                        <p>Cover:</p>
+                        <form action="{{ route('Galleries.update', $Galleries->id) }}" method="post">
+                        <button class="btn text-danger">X</button>
+                        @csrf
+                        @method('delete')
+                        </form>
+                        <img src="/cover/{{ $Galleries->cover }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+                    </div>
+                </div>
+    
+                <div class="mb-2">
+                    <div class="image-container">
+                        @if (count($Galleries->pictures)>0)
+                        <p>Images:</p>
+                        @foreach ($Galleries->pictures as $img)
+                        <form action="{{ route('Galleries.update', $Galleries->id) }}" method="post">
+                            <button class="btn text-danger">X</button>
+                            @csrf
+                            @method('delete')
+                            </form>
+                        <img src="/pictures/{{ $img->picture }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+                        @endforeach
+                        @endif
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <div class="form-group">
+                        <label for="typeofhomestay">Type of Homestay</label>
+                        <select id="typeofhomestay" name="typeofhomestay" class="form-control" value="{{ $Galleries->typeofhomestay }}">
+                            <option value="kontena" {{ $Galleries->typeofhomestay == 'kontena' ? 'selected' : '' }}> HomestaykontenaMelaka </option>
+                            <option value="villaredan" {{ $Galleries->typeofhomestay == 'villaredan' ? 'selected' : '' }}> Villa Redan Homestay </option>
+                            <option value="glamping" {{ $Galleries->typeofhomestay == 'glamping' ? 'selected' : '' }}> Melaka Private Glamping </option>
+                        </select>
+                        @error('typeofhomestay')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
-
-                <!-- Description Section -->
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="description">Description <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="description" value="{{ $editGalleries->description }}">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" value="{{ $Galleries->description }}">
                         @error('description')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-group">
+                        <label for="cover">Upload your cover here</label>
+                        <input type="file" class="form-control" name="cover" value="{{ $Galleries->cover }}">
+                        @error('cover')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-group">
+                        <label for="picture">Upload your images here</label>
+                        <input type="file" class="form-control" name="pictures[]" multiple value="{{ $Galleries->picture }}">
+                        @error('picture')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pictures;
 
 class gallery extends Model
 {
@@ -12,7 +13,12 @@ class gallery extends Model
     protected $table = 'galleries';
 
     protected $fillable = [
-        'picture',
-        'description'
+        'type',
+        'description',
+        'cover'
     ];
+
+    public function pictures(){
+        return $this->hasMany(Pictures::class);
+    }
 }

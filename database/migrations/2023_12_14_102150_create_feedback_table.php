@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('roomnumber')->unique();
             $table->date('date');
-            $table->enum('staffservice', ['excellent','good','fair','poor']);
-            $table->enum('cleanliness', ['excellent','good','fair','poor']);
-            $table->enum('housekeeping', ['excellent','good','fair','poor']);
-            $table->enum('cafefood', ['excellent','good','fair','poor']);
-            $table->enum('amenities', ['excellent','good','fair','poor']);
+            $table->enum('staffservice', ['excellent','good','fair','poor'])->nullable();
+            $table->enum('cleanliness', ['excellent','good','fair','poor'])->nullable();
+            $table->enum('housekeeping', ['excellent','good','fair','poor'])->nullable();
+            $table->enum('cafefood', ['excellent','good','fair','poor'])->nullable();
+            $table->enum('amenities', ['excellent','good','fair','poor'])->nullable();
             $table->enum('overallhomestayrating', ['excellent','good','fair','poor']);
             $table->text('othercomments')->nullable();
             $table->timestamps();
