@@ -14,7 +14,6 @@ class room_availability extends Model
     protected $fillable = [
         'roomnumber',
         'typeofhomestay',
-        'roomtype',
         'occupancy',
         'description',
         'price',

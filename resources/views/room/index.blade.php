@@ -28,7 +28,6 @@
                         <th>#</th>
                         <th>Room Number</th>
                         <th>Type of Homestay</th>
-                        <th>Room Type</th>
                         <th>Occupancy</th>
                         <th>Description</th>
                         <th>Price</th>
@@ -41,7 +40,6 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $room->roomnumber }}</td>
                             <td>{{ $room->typeofhomestay }}</td>
-                            <td>{{ $room->roomtype }}</td>
                             <td>{{ $room->occupancy }}</td>
                             <td>{{ $room->description }}</td>
                             <td>{{ $room->price }}</td>

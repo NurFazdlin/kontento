@@ -49,15 +49,6 @@
                 </div>
                 <div class="mb-2">
                     <div class="form-group">
-                        <label for="roomtype">Room Type <span class="text-danger">*</span></label>
-                        <input type="text" required class="form-control" name="roomtype" value="{{ $editroom->roomtype }}">
-                        @error('roomtype')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="form-group">
                         <label for="occupancy">Occupancy <span class="text-danger">*</span></label>
                         <input type="number" required class="form-control" name="occupancy" value="{{ $editroom->occupancy }}">
                         @error('occupancy')

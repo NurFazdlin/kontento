@@ -48,7 +48,6 @@ class RoomsController extends Controller
             $storeRoom = new room_availability();
             $storeRoom->roomnumber = $request->roomnumber;
             $storeRoom->typeofhomestay = $request->typeofhomestay;
-            $storeRoom->roomtype = $request->roomtype;
             $storeRoom->occupancy = $request->occupancy;
             $storeRoom->description = $request->description;
             $storeRoom->price = $request->price;
@@ -116,7 +115,6 @@ class RoomsController extends Controller
             $storeRoom = new room_availability();
             $storeRoom->roomnumber = $request->roomnumber;
             $storeRoom->typeofhomestay = $request->typeofhomestay;
-            $storeRoom->roomtype = $request->roomtype;
             $storeRoom->occupancy = $request->occupancy;
             $storeRoom->description = $request->description;
             $storeRoom->price = $request->price;

@@ -34,11 +34,6 @@
             </div>
             <div class="mb-2">
                 <div class="form-group">
-                    <p>Room Type: {{ $editroom->roomtype }}</p>
-                </div>
-            </div>
-            <div class="mb-2">
-                <div class="form-group">
                     <p>Occupancy: {{ $editroom->occupancy }}</p>
                 </div>
             </div>
